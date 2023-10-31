@@ -1,0 +1,28 @@
+
+<html>
+
+    <body>
+        <div>
+<h1> {{title}} </h1>
+<input [(ngModel)]="note" >
+<button (click)="ajouternote()"> add note </button>
+<button (click)="deleteall()" > delete notes </button>
+
+<button (click)="shownote()">{{ buttonText }}</button>
+<ul *ngIf="showNotes">
+    <li *ngFor="let note of notes; let i = index" [style.color]="couleurs[i]">
+      {{ note }}
+      <button (click)="deletethisnote(i)">X</button>
+    </li>
+  </ul>
+  <input [(ngModel)]="filtre" placeholder="filtrer une note">
+  <button (click)="filtrer()">filtrer</button>
+  <ul>
+    <li *ngFor="let note of filtres; let i = index" [style.color]="couleurs[i]" [hidden]="!showNotes">
+      {{ note }}
+      <button (click)="deletethisnote(i)">X</button>
+    </li>
+  </ul>
+</div>
+</body>
+</html>
